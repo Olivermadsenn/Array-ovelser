@@ -2,8 +2,19 @@
 
 window.addEventListener("load", start);
 
-function start(){
-    const students =
+ async function start(){
+    const students = await getStudent();
+    // addStudent(students[0])
+    // addStudent(students[1])
+    // addStudent(students[2])
+
+    students.forEach(addStudent);
+}
+
+async function getStudent(url){
+    const response = await fetch("data.json");
+    const data = await response.json();
+    return data;
 }
 
 // const navne = ["Harry", "Ron", "Hermione"];
@@ -48,6 +59,3 @@ function addStudent(student){
     `<li>${student.firstName} ${student.lastName}</li>`);
 }
 
-    addStudent(students[0]);
-    addStudent(students[1]);
-    addStudent(students[2]);
